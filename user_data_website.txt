@@ -1,0 +1,25 @@
+#!/bin/bash
+
+sudo apt update -y
+sudo apt install nginx -y
+service nginx start
+service nginx enable
+
+#download and save as a different name
+wget https://www.free-css.com/assets/files/free-css-templates/download/page279/grad-school.zip -O myweb.zip
+
+sudo apt install unzip -y
+
+#unzip to a specific folder
+unzip $PWD/myweb.zip -d mywebsite
+
+rm /var/www/html/*
+
+#moving the inner contents
+mv $PWD/mywebsite/*/* /var/www/html/
+
+Myname=Syed Faraz
+ 
+web_title=cat /var/www/html/index.html | awk "/title/" | tr -d "<title>" | tr -d "</title>"
+
+sed -i "s/"$web_title"/"$Myname"/g" /var/www/html/index.html
