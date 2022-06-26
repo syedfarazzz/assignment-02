@@ -1,7 +1,7 @@
-#!bin/bash
+#!/bin/bash
 
 
-no_clr ='\033[0m'         # white
+no_clr='\033[0m'         # white
 red='\033[0;31m'          # Red
 green='\033[0;32m'        # Green
 
@@ -25,7 +25,9 @@ if [ "$UID" -eq "0" ]
                     else
                         echo -e "${red}Something went wrong, NGINX cannot be activated${no_clr}"
                     fi
-            && echo -e "${Green}Nginx is Running${no_clr}" 
+            fi        
+        }&& { echo -e "${green}Nginx is Running${no_clr}" 
+            
         }
 
 else
